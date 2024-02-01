@@ -15,10 +15,13 @@
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
     "axios": "^1.6.5",
+    "css-loader": "^6.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+    "react-paginate": "^8.2.0",
     "react-router-dom": "^6.21.3",
+    "style-loader": "^3.3.4",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

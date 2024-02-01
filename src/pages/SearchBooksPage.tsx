@@ -8,7 +8,7 @@ const SearchBooksPage = () => {
   return (
     <Container
       maxWidth="xl"
-      sx={{ width: "100%", margin: "10rem 0 10rem 18rem" }}
+      sx={{ width: "100%", margin: "10rem auto" }}
     >
       <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
         Books by your search

@@ -72,7 +72,7 @@ const BookPage = () => {
   }
 
   return (
-    <Paper sx={{ padding: 5, margin: "10rem 0 5rem 18rem" }}>
+    <Paper sx={{ padding: 5, margin: "10rem 15rem" }}>
       <Container>
         <CardMedia
           component="img"

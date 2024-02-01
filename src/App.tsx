@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import BookPage from "./pages/BookPage";
 import CategoryBooksPage from "./pages/CategoryBooksPage";
 import ErrorPage from "./pages/ErrorPage";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
 import AppDrawer from "./components/AppDrawer";
 import SearchBooksPage from "./pages/SearchBooksPage";

@@ -78,6 +78,7 @@ const CategoryBooksPage = () => {
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
+          border: "2px solid #fff",
           paddingBottom: "5rem",
         }}
       >
@@ -119,6 +120,7 @@ const CategoryBooksPage = () => {
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
+          border: "2px solid #fff",
           paddingTop: "5rem",
         }}
       >

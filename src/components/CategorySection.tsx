@@ -71,7 +71,7 @@ const CategorySection = ({ categoryName }: CategorySectionProps) => {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ width: "100%", margin: '0 0 5rem 18rem' }}>
+    <Container maxWidth="xl" sx={{ width: "100%", margin: '5rem auto' }}>
       {loading ? (
         <Grid container sx={{ padding: "1rem 3rem" }} spacing={2} rowSpacing={2}>
           {Array.from({ length: 6 }).map((_, index) => (

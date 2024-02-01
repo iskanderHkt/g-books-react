@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link as RouterLink } from "react-router-dom";
-import { Card, CardContent, CardMedia, Typography, Rating, Box, Link } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Rating,
+  Box,
+  Link,
+} from "@mui/material";
 import base_api from "../../../data/base_api";
 
 interface Book {
@@ -76,7 +84,8 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
     <Card
       sx={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
+        alignItems: "center",
         minHeight: "600px",
         maxWidth: "60vw",
         height: "100%",
@@ -87,7 +96,12 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
         alt="book-cover image"
         height="400"
         image={book?.volumeInfo.imageLinks.thumbnail}
-        style={{ objectFit: "contain" }}
+        style={{
+          objectFit: "contain",
+          border: "5px solid #ccc",
+          borderRadius: "10px",
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+        }}
       />
 
       <CardContent
@@ -115,14 +129,22 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
             ))}
         </Box>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-          Rating: <Rating value={book?.volumeInfo.averageRating || 5} readOnly />
+          Rating:{" "}
+          <Rating value={book?.volumeInfo.averageRating || 5} readOnly />
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{ mt: 1, flex: 1, overflow: "hidden", textOverflow: "ellipsis" }}
-        >
-          {book?.volumeInfo.description || "No description"}
-        </Typography>
+        <div>
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1,
+              flex: 1,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {book?.volumeInfo.description || "No description"}
+          </Typography>
+        </div>
         <Link
           component={RouterLink}
           to={`/book/${id}`}

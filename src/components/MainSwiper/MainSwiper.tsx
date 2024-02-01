@@ -67,7 +67,7 @@ const MainSwiper = () => {
         maxWidth={"xl"}
         style={{
           paddingTop: "5rem",
-          margin: '5rem 0 0 18rem',
+          margin: '5rem 0 0 0',
           textAlign: 'center'
         }}
       >
@@ -82,7 +82,7 @@ const MainSwiper = () => {
         maxWidth={"xl"}
         style={{
           paddingTop: "5rem",
-          margin: '5rem 0 0 18rem',
+          margin: '5rem 0 0 0',
           textAlign: 'center'
         }}
       >
@@ -95,7 +95,7 @@ const MainSwiper = () => {
 
   return (
     <>
-      <Container maxWidth={"xl"} style={{ paddingTop: "5rem", margin: '5rem 0 0 18rem' }}>
+      <Container maxWidth={"xl"} style={{ paddingTop: "5rem", margin: '5rem auto' }}>
       <Typography variant="h2" sx={{ textAlign: "center", marginBottom: "2rem" }}>
         Most popular {categoryName} books
       </Typography>

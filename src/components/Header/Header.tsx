@@ -15,10 +15,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
-import { GiBlackBook } from "react-icons/gi";
+import { GiBlackBook, GiHamburgerMenu } from "react-icons/gi";
 import { MdAccountCircle } from "react-icons/md";
-import { useBooksContext } from "../BookContext";
-import { useNavigate } from 'react-router-dom';
+
+import { useBooksContext } from "../../BookContext";
+import { useNavigate } from "react-router-dom";
+import { useDisplayContext } from "../../DisplayContext";
+
+import "./HeaderStyles/Header.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
+    [theme.breakpoints.down("sm")]: { width: "30em" },
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -60,9 +65,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
-
-
 const apiKey = import.meta.env.VITE_NEW_API_KEY;
 
 const categories = ["all", "by book", "by author"];
@@ -70,7 +72,9 @@ const categories = ["all", "by book", "by author"];
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
-  const { books, setBooks} = useBooksContext();
+  const { books, setBooks } = useBooksContext();
+  const { display, setDisplay } = useDisplayContext();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -127,75 +131,79 @@ const Header = () => {
 
   const handleSearchSubmit = () => {
     getBooks();
-    navigate('/search-books')
+    navigate("/search-books");
   };
 
   return (
-    <AppBar position="fixed" style={{ backgroundColor: "#2196f3" }}>
-      <Toolbar style={{ display: "flex" }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            height: "2rem",
-            gap: "20rem",
-            padding: "0.5rem",
-            alignItems: "center",
-            borderRadius: "10px",
-            margin: "1rem 0",
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            {/* <Button color="inherit" component={Link} to="/">
-              <Typography sx={{ marginTop: "1rem" }} variant={"h4"}>
-                O
-              </Typography>
-            </Button> */}
-            <Typography component="div">
-              <Button color="inherit" component={Link} to="/">
-                <GiBlackBook style={{ marginRight: "1rem" }} size={50} />
+    <AppBar position="fixed" className="app-bar-container ">
+      <Toolbar className="toolbar-container">
+        <Box className="left-block">
+          <Box className="logo-button">
+            <Typography component="div" className="logo-text">
+              <Button
+                onClick={() =>
+                  display === "none" ? setDisplay("block") : setDisplay("none")
+                }
+                color="inherit"
+              >
                 <Typography sx={{ marginTop: "1rem" }} variant={"h4"}>
-                  books
+                  <GiHamburgerMenu />
                 </Typography>
+              </Button>
+              <Button
+                sx={{ margin: "0 1.5rem" }}
+                color="inherit"
+                component={Link}
+                to="/"
+              >
+                <GiBlackBook size={"4rem"} />
+                <Typography>books</Typography>
               </Button>
             </Typography>
           </Box>
+        </Box>
 
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                sx={{ width: "30em" }}
-                placeholder="Search books"
-                inputProps={{ "aria-label": "search" }}
-                value={searchQuery}
-                onChange={handleSearchChange}
-                onKeyDown={(e) => e.key === "Enter" && handleSearchSubmit()}
-              />
-            </Search>
-            <ToggleButtonGroup
-              value={categoryFilter}
-              exclusive
-              onChange={(_event, value) => onCategoryBtnClick(value)}
-            >
-              {categories.map((category) => (
-                <ToggleButton
-                  key={category}
-                  value={category}
-                  sx={{ color: "#fff" }}
-                >
-                  {category}
-                </ToggleButton>
-              ))}
-            </ToggleButtonGroup>
-          </Box>
-          <Box sx={{ display: "flex", marginLeft: '5rem' }}>
-            <Button color="inherit" component={Link} to="/account">
-              <MdAccountCircle size={50} />
-            </Button>
-          </Box>
+        <Box className="middle-block">
+          <Search className="search-container">
+            <SearchIconWrapper>
+              <SearchIcon className="search-icon" />
+            </SearchIconWrapper>
+            <StyledInputBase
+              className="search-input"
+              placeholder="Search books"
+              inputProps={{ "aria-label": "search" }}
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onKeyDown={(e) => e.key === "Enter" && handleSearchSubmit()}
+            />
+          </Search>
+          <ToggleButtonGroup
+            value={categoryFilter}
+            exclusive
+            onChange={(_event, value) => onCategoryBtnClick(value)}
+          >
+            {categories.map((category) => (
+              <ToggleButton
+                sx={{ color: "#FFF" }}
+                className="search-button"
+                key={category}
+                value={category}
+              >
+                {category}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </Box>
+
+        <Box className="right-block">
+          <Button
+            color="inherit"
+            component={Link}
+            to="/account"
+            className="account-button"
+          >
+            <MdAccountCircle size={50} />
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>
