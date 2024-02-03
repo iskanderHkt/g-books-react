@@ -10,11 +10,33 @@ import { Link } from "react-router-dom";
 import { useDisplayContext } from "../DisplayContext";
 import { GiHamburgerMenu, GiBlackBook } from "react-icons/gi";
 import categories from "../data/categories";
+import { useEffect } from "react";
 
 const drawerWidth = "18rem";
 
 const AppDrawer = () => {
   const { display, setDisplay } = useDisplayContext();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+
+      // Проверяем, существует ли event.target и у него есть ли метод closest
+      if (target.closest && !target.closest("#drawer-container")) {
+        // Проверяем, что не было клика по кнопке с исключением
+        if (!target.closest("#exception-button")) {
+          setDisplay("none");
+        }
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [setDisplay]);
+
   return (
     <Container
       sx={{
@@ -31,12 +53,14 @@ const AppDrawer = () => {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
+            overflowX: "hidden",
           },
         }}
         variant="permanent"
         anchor="left"
       >
         <Box
+          id="exception-button"
           sx={{
             width: "100%",
             display: "flex",
@@ -68,10 +92,14 @@ const AppDrawer = () => {
           </Typography>
         </Box>
 
-        <Toolbar sx={{ padding: "0.5rem", width: drawerWidth }}>
+        <Toolbar
+          id="exception-button"
+          sx={{ padding: "0.5rem", width: drawerWidth }}
+        >
           <Typography variant="h5">books by category</Typography>
         </Toolbar>
         <Divider
+          id="exception-button"
           sx={{
             borderTop: "1px solid #000",
             // Толщина и цвет верхней границы
@@ -85,6 +113,7 @@ const AppDrawer = () => {
               sx={{ "&:hover": { backgroundColor: "#f0f0f0" } }}
             >
               <Link
+                onClick={() => setDisplay("none")}
                 to={`/categoryBooks/${category}`}
                 style={{
                   textDecoration: "none",

@@ -41,6 +41,18 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
   const [book, setBook] = useState<Book | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const description = book?.volumeInfo.description
+    ?.replace(/<p[^>]*>/g, "")
+    .replace(/<[/]p[^>]*>/g, "")
+    .replace(/<br>/g, "\n")
+    .replace(/<i[^>]*>/g, "")
+    .replace(/<[/]i[^>]*>/g, "");
+
+  const truncatedDescription =
+    description && description.length > 900
+      ? `${description.slice(0, 1000)} ...`
+      : description;
+
   useEffect(() => {
     const getCachedData = () => {
       const cachedData = localStorage.getItem(`cachedBook_${id}`);
@@ -85,31 +97,52 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
       sx={{
         display: "flex",
         flexDirection: "row",
+        justifyContent: "space-around",
+        gap: "no-gap",
         alignItems: "center",
-        minHeight: "600px",
-        maxWidth: "60vw",
+        maxHeight: "70vh",
+        minHeight: "70vh",
+        minWidth: "55vw",
         height: "100%",
+        backgroundColor: 'gray',
+        "@media (max-width: 576px)": {
+          width: "100vw",
+        },
       }}
     >
       <CardMedia
         component="img"
         alt="book-cover image"
-        height="400"
         image={book?.volumeInfo.imageLinks.thumbnail}
-        style={{
-          objectFit: "contain",
+        sx={{
+          width: "20vw",
+          height: "60vh",
+          objectFit: "cover",
           border: "5px solid #ccc",
           borderRadius: "10px",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+          "@media (max-width: 576px)": {
+            width: "100%",
+            objectFit: "contain",
+            padding: '2rem 0'
+          },
         }}
       />
 
       <CardContent
         sx={{
+          maxWidth: "20vw",
+          width: "100%",
+          border: "2px solid black",
+          maxHeight: "30rem",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           flex: 1,
           padding: "1rem",
+          "@media (max-width: 576px)": {
+            display: "none",
+          },
         }}
       >
         <Typography variant="h6" component="div">
@@ -132,17 +165,20 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
           Rating:{" "}
           <Rating value={book?.volumeInfo.averageRating || 5} readOnly />
         </Typography>
-        <div>
+        <div
+          style={{
+            textOverflow: "ellipsis",
+            maxWidth: "100%", // Ширина блока будет 100%, но с учетом padding
+            boxSizing: "border-box", // Чтобы padding не увеличивал ширину блока
+            paddingRight: "1rem",
+            overflow: "hidden",
+          }}
+        >
           <Typography
             variant="body2"
-            sx={{
-              mt: 1,
-              flex: 1,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
+            sx={{ whiteSpace: "pre-line", overflow: "hidden" }}
           >
-            {book?.volumeInfo.description || "No description"}
+            {truncatedDescription || "No description"}
           </Typography>
         </div>
         <Link

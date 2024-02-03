@@ -67,7 +67,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const apiKey = import.meta.env.VITE_NEW_API_KEY;
 
-const categories = ["all", "by book", "by author"];
+const categories = ["all", "book", "author"];
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -94,10 +94,10 @@ const Header = () => {
           case "all":
             query = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&orderBy=relevance&maxResults=9&key=${apiKey}`;
             break;
-          case "by book":
+          case "book":
             query = `https://www.googleapis.com/books/v1/volumes?q=+intitle:${searchQuery}&orderBy=relevance&maxResults=9&key=${apiKey}`;
             break;
-          case "by author":
+          case "author":
             query = `https://www.googleapis.com/books/v1/volumes?q=+inauthor:${searchQuery}&orderBy=relevance&maxResults=9&key=${apiKey}`;
             break;
           default:
@@ -138,28 +138,30 @@ const Header = () => {
     <AppBar position="fixed" className="app-bar-container ">
       <Toolbar className="toolbar-container">
         <Box className="left-block">
-          <Box className="logo-button">
-            <Typography component="div" className="logo-text">
-              <Button
-                onClick={() =>
-                  display === "none" ? setDisplay("block") : setDisplay("none")
-                }
-                color="inherit"
-              >
-                <Typography sx={{ marginTop: "1rem" }} variant={"h4"}>
-                  <GiHamburgerMenu />
-                </Typography>
-              </Button>
-              <Button
-                sx={{ margin: "0 1.5rem" }}
-                color="inherit"
-                component={Link}
-                to="/"
-              >
-                <GiBlackBook size={"4rem"} />
-                <Typography>books</Typography>
-              </Button>
-            </Typography>
+          <Box
+            className="logo-button"
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            <Button
+              id="exception-button"
+              onClick={() =>
+                display === "none" ? setDisplay("block") : setDisplay("none")
+              }
+              color="inherit"
+            >
+              <Typography sx={{ marginTop: "1rem" }} variant={"h4"}>
+                <GiHamburgerMenu />
+              </Typography>
+            </Button>
+            <Button
+              sx={{ margin: "0 1.5rem" }}
+              color="inherit"
+              component={Link}
+              to="/"
+            >
+              <GiBlackBook size={"4rem"} />
+              <Typography>books</Typography>
+            </Button>
           </Box>
         </Box>
 
@@ -184,7 +186,7 @@ const Header = () => {
           >
             {categories.map((category) => (
               <ToggleButton
-                sx={{ color: "#FFF" }}
+                sx={{ color: "#FFF", padding: "0.5rem" }}
                 className="search-button"
                 key={category}
                 value={category}

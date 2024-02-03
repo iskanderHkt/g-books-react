@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
 import AppDrawer from "./components/AppDrawer";
 import SearchBooksPage from "./pages/SearchBooksPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const Layout = () => (
   <>
@@ -30,7 +31,7 @@ function App() {
             element={<CategoryBooksPage />}
           />
           <Route path="/search-books" element={<SearchBooksPage />} />
-
+          <Route path="/account" element={<RegistrationPage/>}/>
           <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>

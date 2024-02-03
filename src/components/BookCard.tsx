@@ -31,6 +31,10 @@ const BookCard = ({ id, title, authors, imageLinks, categories }: BookCardProps)
           flexDirection: "row",
           alignItems: "stretch",
         },
+        '@media (max-width: 576px)': {
+          flexDirection: "row",
+          width: '100vw'
+        },
       }}>
         <Box sx={{ display: "flex", flexDirection: "column", width: { xs: "100%", sm: "70%" } }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
