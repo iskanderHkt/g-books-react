@@ -14,7 +14,7 @@ const RegistrationPage: React.FC = () => {
       <Typography
         variant="h3"
         align="center"
-        color={"#2196f3"}
+        color={"#1fa755"}
         margin={"0 0 3rem 0"}
       >
         Registration
@@ -27,6 +27,14 @@ const RegistrationPage: React.FC = () => {
               variant="outlined"
               fullWidth
               required
+              sx={{
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#1fa755", // Цвет границы при выделении
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#1fa755", // Цвет текста при выделении
+                },
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -35,6 +43,14 @@ const RegistrationPage: React.FC = () => {
               variant="outlined"
               fullWidth
               required
+              sx={{
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#1fa755", // Цвет границы при выделении
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#1fa755", // Цвет текста при выделении
+                },
+              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -44,6 +60,14 @@ const RegistrationPage: React.FC = () => {
               variant="outlined"
               fullWidth
               required
+              sx={{
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#1fa755", // Цвет границы при выделении
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#1fa755", // Цвет текста при выделении
+                },
+              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -53,11 +77,19 @@ const RegistrationPage: React.FC = () => {
               variant="outlined"
               fullWidth
               required
+              sx={{
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#1fa755", // Цвет границы при выделении
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#1fa755", // Цвет текста при выделении
+                },
+              }}
             />
           </Grid>
           <Grid item xs={12} margin={"3rem 0 0 0"}>
             <Button
-              sx={{ padding: "1.5rem 0", backgroundColor:'#2196f3' }}
+              sx={{ padding: "1.5rem 0", backgroundColor:'#1fa755' }}
               variant="contained"
               fullWidth
               type="submit"

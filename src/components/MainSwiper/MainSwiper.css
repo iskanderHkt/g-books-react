@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.container-swiper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 3rem;
+}
+
 .swiper {
   height: 100%;
   max-width: 100vw;
@@ -6,7 +12,7 @@
 
 .swiper-slide {
   font-size: 18px;
-  background: #1a1a1a;
+  background: #17202A;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +48,7 @@
 /* Стили для экранов с шириной меньше 600px (мобильные устройства) */
 @media (max-width: 600px) {
   .swiper-slide {
-    white-space: normal; /* Перенос текста на новую строку на мобильных устройствах */
+    white-space: normal;
+    /* Перенос текста на новую строку на мобильных устройствах */
   }
 }/*# sourceMappingURL=MainSwiper.css.map */

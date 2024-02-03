@@ -21,7 +21,7 @@ const Layout = () => (
 
 function App() {
   return (
-    <>
+    <div>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index path="/" element={<Home />} />
@@ -35,7 +35,7 @@ function App() {
           <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 }
 

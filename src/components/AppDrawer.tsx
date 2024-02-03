@@ -11,6 +11,7 @@ import { useDisplayContext } from "../DisplayContext";
 import { GiHamburgerMenu, GiBlackBook } from "react-icons/gi";
 import categories from "../data/categories";
 import { useEffect } from "react";
+import "../components/Header/HeaderStyles/Header.css";
 
 const drawerWidth = "18rem";
 
@@ -60,13 +61,15 @@ const AppDrawer = () => {
         anchor="left"
       >
         <Box
+         
           id="exception-button"
           sx={{
             width: "100%",
             display: "flex",
             alignItems: "center",
-            backgroundColor: "#2196f3",
             padding: "0.6rem 0 0.6rem 1.5rem",
+            backgroundColor: '#1fa755',
+            zIndex: '0'
           }}
         >
           <Typography component="div" className="logo-text">

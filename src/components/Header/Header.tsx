@@ -135,7 +135,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="fixed" className="app-bar-container ">
+    <AppBar position="fixed" className="app-bar-container">
       <Toolbar className="toolbar-container">
         <Box className="left-block">
           <Box
@@ -160,7 +160,7 @@ const Header = () => {
               to="/"
             >
               <GiBlackBook size={"4rem"} />
-              <Typography>books</Typography>
+              <Typography className="logo-text">books</Typography>
             </Button>
           </Box>
         </Box>
@@ -186,8 +186,11 @@ const Header = () => {
           >
             {categories.map((category) => (
               <ToggleButton
-                sx={{ color: "#FFF", padding: "0.5rem" }}
-                className="search-button"
+              className="search-button"
+                sx={{
+                  color: "#FFF",
+                  padding: "0.5rem",
+                }}
                 key={category}
                 value={category}
               >

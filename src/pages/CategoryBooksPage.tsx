@@ -26,15 +26,20 @@ const itemsPerPage = 9;
 
 const CategoryBooksPage = () => {
   const { category } = useParams();
-  
+
   const [categoryBooks, setCategoryBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(6);
   const [currentCategory, setCurrentCategory] = useState<string | null>(null);
 
+  if (totalPages === 7) {
+    setTotalPages(6);
+  }
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    console.log(event.target);
+
     setPage(value);
   };
 
@@ -95,7 +100,13 @@ const CategoryBooksPage = () => {
         >
           <Pagination
             size="large"
-            sx={{ margin: "0 auto", color: "#fff" }}
+            sx={{
+              margin: "0 auto",
+              color: "#fff",
+              "& .Mui-selected": {
+                backgroundColor: "#1fa755",
+              },
+            }}
             color="primary"
             count={totalPages}
             page={page}
@@ -136,7 +147,13 @@ const CategoryBooksPage = () => {
         >
           <Pagination
             size="large"
-            sx={{ margin: "0 auto", color: "#fff" }}
+            sx={{
+              margin: "0 auto",
+              color: "#fff",
+              "& .Mui-selected": {
+                backgroundColor: "#1fa755",
+              },
+            }}
             color="primary"
             count={totalPages}
             page={page}

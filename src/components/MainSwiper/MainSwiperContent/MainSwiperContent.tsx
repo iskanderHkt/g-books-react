@@ -104,7 +104,8 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
         minHeight: "70vh",
         minWidth: "55vw",
         height: "100%",
-        backgroundColor: 'gray',
+        margin: "0 auto",
+        backgroundColor: "#FFF",
         "@media (max-width: 576px)": {
           width: "100vw",
         },
@@ -121,10 +122,15 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
           border: "5px solid #ccc",
           borderRadius: "10px",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+          "@media (max-width: 768px)": {
+            width: "100%",
+            objectFit: "contain",
+            padding: "2rem 0",
+          },
           "@media (max-width: 576px)": {
             width: "100%",
             objectFit: "contain",
-            padding: '2rem 0'
+            padding: "2rem 0",
           },
         }}
       />
@@ -133,19 +139,28 @@ const MainSwiperContent = ({ id }: MSContentProps) => {
         sx={{
           maxWidth: "20vw",
           width: "100%",
-          border: "2px solid black",
+          borderRadius: "10px" /* Радиус скругления углов */,
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
           maxHeight: "30rem",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           flex: 1,
           padding: "1rem",
+          color: "#17202A ",
+          "@media (max-width: 768px)": {
+            display: "none",
+          },
           "@media (max-width: 576px)": {
             display: "none",
           },
         }}
       >
-        <Typography variant="h6" component="div">
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ whiteSpace: "pre-line" }}
+        >
           {book?.volumeInfo.title || "No Title"}
         </Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap" }}>

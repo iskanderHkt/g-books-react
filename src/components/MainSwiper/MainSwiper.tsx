@@ -94,24 +94,26 @@ const MainSwiper = () => {
     <>
       <Container
         maxWidth={"xl"}
+        className="container-swiper"
+
         sx={{ paddingTop: "5rem", margin: "5rem auto" }}
       >
         <Typography
           variant="h2"
-          sx={{ textAlign: "center", marginBottom: "2rem" }}
+          sx={{ textAlign: "center", marginBottom: "2rem", color: '#fff' }}
         >
           Most popular {categoryName} books
         </Typography>
         <Swiper
-          style={{ width: "100%" }}
+          style={{ width: "100%", margin: "0 auto" }}
           modules={[Navigation, Autoplay, Pagination]}
           slidesPerView={1}
           className="mySwiper"
           loop={true}
           navigation={true}
-          pagination={{
-            dynamicBullets: true,
-          }}
+          // pagination={{
+          //   dynamicBullets: true,
+          // }}
         >
           {sliderBooks.map((book) => (
             <SwiperSlide key={book.id}>

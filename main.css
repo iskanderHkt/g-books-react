@@ -1,6 +1,13 @@
+.font {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #1a1a1a;
+  background-color: #17202A;
   color: #fff;
 }
+
+

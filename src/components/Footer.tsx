@@ -4,15 +4,15 @@ const Footer = () => {
   return (
     <AppBar
       position="static"
-      style={{
-        backgroundColor: "#2196f3",
+      sx={{
+        backgroundColor: "#2ecc709f",
         marginTop: "auto",
         boxShadow: "none",
       }}
     >
       <Toolbar style={{ justifyContent: "center" }}>
-        <Typography variant="body2" color="inherit">
-          © {new Date().getFullYear()} Your Website
+        <Typography fontSize={'1.5rem'} variant="body2" color="inherit">
+          © {new Date().getFullYear()} Books Website
         </Typography>
       </Toolbar>
     </AppBar>

@@ -83,7 +83,7 @@ const CategorySection = ({ categoryName }: CategorySectionProps) => {
       ) : (
         <Container maxWidth="xl" sx={{ width: "100%" }}>
           <Link to={`/categoryBooks/${categoryName}`} style={{ textDecoration: "none", color: "inherit", display: "block", width: "max-content" }}>
-            <Typography sx={{ marginTop: "2rem", marginLeft: "2.5rem", "&:hover": { cursor: "pointer", color: "#29b6f6" } }} variant="h4" component="p">
+            <Typography sx={{ marginTop: "2rem", color:'#fff', marginLeft: "2.5rem", "&:hover": { cursor: "pointer", color: "#3498db" } }} variant="h4" component="p">
               Popular {categoryName} books
             </Typography>
           </Link>
@@ -93,7 +93,7 @@ const CategorySection = ({ categoryName }: CategorySectionProps) => {
           </Grid>
 
           <Link to={`/categoryBooks/${categoryName}`} style={{ textDecoration: "none", color: "inherit", display: "block", width: "max-content", margin: "0 auto" }}>
-            <Typography sx={{ textAlign: "center", "&:hover": { cursor: "pointer", color: "#29b6f6" } }} variant="h5" component="p">
+            <Typography sx={{ textAlign: "center",  color:'#fff', "&:hover": { cursor: "pointer", color: "#3498db" } }} variant="h5" component="p">
               Show more
             </Typography>
           </Link>
